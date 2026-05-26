@@ -36,7 +36,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://pizza-tp-git-main-bht-04s-projects.vercel.app",
+  "https://pizza-tp-drab.vercel.app",
 ];
 
 app.use(
