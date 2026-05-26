@@ -36,8 +36,11 @@ const app = express();
 
 app.use(
   cors({
+    origin: [
+      "http://localhost:5173",
+      "https://pizza-tp-drab.vercel.app"
+    ],
     credentials: true,
-    origin: process.env.FRONTEND_URL,
   })
 );
 
@@ -78,7 +81,10 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://pizza-tp-drab.vercel.app"
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   },
