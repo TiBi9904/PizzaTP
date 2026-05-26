@@ -49,7 +49,7 @@ import CategoryAllProductsPage from "../components/CategoryAllProductsPage";
 import DashboardDelivery from "../layouts/DashboardDelivery";
 import CustomerFeedback from "../pages/MenuItemAdmin/CustomerFeedback";
 import OrdersAwaitingDelivery from "../pages/MenuItemAdmin/Orders/OrdersAwaitingDelivery";
-import OrdersAreBeingDelivered from "../pages/MenuItemAdmin/Orders/OrdersAreBeingDelivered.JSX";
+import OrdersAreBeingDelivered from "../pages/MenuItemAdmin/Orders/OrdersAreBeingDelivered.jsx";
 import TheOrderHasBeenDelivered from "../pages/MenuItemAdmin/Orders/TheOrderHasBeenDelivered";
 import OrderTracking from "../pages/MenuItemUser/OrderTracking";
 import ProtectedRouteAdmin from "../components/ProtectedRouteAdmin";
