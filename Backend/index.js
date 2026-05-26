@@ -38,7 +38,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://pizza-tp-drab.vercel.app"
+      "https://pizza-tp-git-main-bht-04s-projects.vercel.app",
     ],
     credentials: true,
   })
