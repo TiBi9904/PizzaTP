@@ -34,12 +34,20 @@ import Notification from "./models/notification.model.js";
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://pizza-tp-git-main-bht-04s-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://pizza-tp-git-main-bht-04s-projects.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -81,10 +89,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://pizza-tp-drab.vercel.app"
-    ],
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
     credentials: true,
   },
