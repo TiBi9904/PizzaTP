@@ -25,7 +25,7 @@ export default function Livechat() {
     const socket = connectSocket(token);
 
     axios
-      .get(`http://localhost:8080/api/livechat/my`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/livechat/my`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setMessages(res.data.data.messages || []))
@@ -75,7 +75,7 @@ export default function Livechat() {
 
   const deleteChat = async () => {
     toast.promise(
-      axios.delete("http://localhost:8080/api/livechat/my", {
+      axios.delete(`${import.meta.env.VITE_API_URL}/api/livechat/my`, {
         headers: { Authorization: `Bearer ${token}` },
       }),
       {

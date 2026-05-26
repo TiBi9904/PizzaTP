@@ -7,7 +7,7 @@ export const connectSocket = (token) => {
     socket.disconnect();
   }
 
-  socket = io("http://localhost:8080", {
+  socket = io(import.meta.env.VITE_API_URL, {
     auth: { token },
     transports: ["websocket"],
   });

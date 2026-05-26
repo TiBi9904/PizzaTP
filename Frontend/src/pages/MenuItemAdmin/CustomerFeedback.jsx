@@ -20,7 +20,7 @@ export default function CustomerFeedback() {
     const socket = connectSocket(token);
 
     axios
-      .get(`http://localhost:8080/api/livechat`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/livechat`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -86,7 +86,7 @@ export default function CustomerFeedback() {
 
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/livechat/${user._id}`,
+        `${import.meta.env.VITE_API_URL}/api/livechat/${user._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
