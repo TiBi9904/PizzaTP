@@ -73,70 +73,70 @@ const CardProduct = ({ data }) => {
   );
 
   return (
-    <Link
-      to={url}
-      className="group relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+<Link
+  to={url}
+  className="group relative bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 isolate"
+>
+  <div className="relative overflow-hidden h-44 w-full bg-white flex items-center justify-center">
+    
+    <img
+      src={data?.image?.[0]}
+      alt={data?.name}
+      className="w-full h-full object-scale-down transform group-hover:scale-105 transition-transform duration-500 will-change-transform"
+      loading="lazy"
+    />
+
+    {/* ADD TO CART */}
+    <div className="absolute inset-x-0 bottom-2 flex justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 z-10">
+      <AddToCartButton
+        data={data}
+        className="w-40 text-xs px-3 py-1 rounded-md shadow-md bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors"
+      />
+    </div>
+
+    {/* HEART ICON FIX */}
+    <button
+      onClick={handleToggleFavorite}
+      disabled={isProcessing || favoritesLoading}
+      className="absolute top-2 right-2 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-20"
+      title={isProductFavorite ? "Xóa khỏi yêu thích" : "Thêm vào yêu thích"}
     >
-      <div className="relative overflow-hidden h-44 w-full bg-white flex items-center justify-center">
-        <img
-          src={data?.image?.[0]}
-          alt={data?.name}
-          className="w-full h-full object-scale-down transform group-hover:scale-110 transition-transform duration-500"
-          loading="lazy"
-        />
+      <Heart
+        className={`w-5 h-5 transition-all ${
+          isProductFavorite
+            ? "text-red-500 fill-red-500"
+            : "text-gray-400"
+        }`}
+      />
+    </button>
 
-        <div className="absolute inset-x-0 bottom-2 flex justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
-          <AddToCartButton
-            data={data}
-            className="w-40 text-xs px-3 py-1 rounded-md shadow-md bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors"
-          />
-        </div>
-
-        <button
-          onClick={handleToggleFavorite}
-          disabled={isProcessing || favoritesLoading}
-          className="absolute top-2 right-2 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed"
-          title={
-            isProductFavorite ? "Xóa khỏi yêu thích" : "Thêm vào yêu thích"
-          }
-        >
-          <Heart
-            className={`w-5 h-5 transition-all ${
-              isProductFavorite
-                ? "text-red-500 fill-red-500"
-                : "text-gray-400 hover:text-red-300"
-            }`}
-          />
-        </button>
-
-        {isProcessing && (
-          <div className="absolute top-2 right-2 p-2 bg-white/90 rounded-full z-20">
-            <div className="w-5 h-5 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
+    {/* LOADING SPINNER */}
+    {isProcessing && (
+      <div className="absolute top-2 right-2 p-2 bg-white/90 rounded-full z-30">
+        <div className="w-5 h-5 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
+    )}
+  </div>
 
-      <div className="p-4">
-        <div className="flex justify-between items-center mb-2">
-          {discountBadge}
-          <div className="w-9"></div>
-        </div>
+  {/* INFO */}
+  <div className="p-4">
+    <div className="flex justify-between items-center mb-2">
+      {discountBadge}
+      <div className="w-9"></div>
+    </div>
 
-        <h3
-          className="font-semibold text-lg text-gray-800 truncate"
-          title={data?.name}
-        >
-          {data?.name}
-        </h3>
+    <h3 className="font-semibold text-lg text-gray-800 truncate">
+      {data?.name}
+    </h3>
 
-        <div className="flex items-center justify-between mt-2 text-sm text-gray-600">
-          <span className="font-medium">
-            Loại: <span className="text-gray-700">{data?.type}</span>
-          </span>
-          {priceDisplay}
-        </div>
-      </div>
-    </Link>
+    <div className="flex items-center justify-between mt-2 text-sm text-gray-600">
+      <span>
+        Loại: <span className="text-gray-700">{data?.type}</span>
+      </span>
+      {priceDisplay}
+    </div>
+  </div>
+</Link>
   );
 };
 

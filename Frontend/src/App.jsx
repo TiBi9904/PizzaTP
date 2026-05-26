@@ -18,6 +18,7 @@ import {
 import GlobalProvider from "./provider/GlobalProvider";
 // import toast, { Toaster } from "react-hot-toast";
 import Livechat from "./components/Livechat";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ function App() {
         <main className="min-h-[78vh]">
           <Outlet />
         </main>
+        <ScrollToTopButton />
         <Livechat />
         <Footer />
       </GlobalProvider>

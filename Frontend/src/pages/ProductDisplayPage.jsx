@@ -560,7 +560,7 @@ const ProductDisplayPage = () => {
                   <img
                     src={item.image[0]}
                     alt={item.name}
-                    className="w-full h-[240px] object-scale-down transform group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-auto object-scale-down transform group-hover:scale-110 transition-transform duration-500"
                   />
                   {item.discount > 0 && (
                     <div className="absolute top-2 left-2 bg-red-500 text-white px-1.5 py-0.5 rounded text-xs font-semibold">
@@ -573,7 +573,7 @@ const ProductDisplayPage = () => {
                     {item.name}
                   </h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-red-500 font-bold text-sm">
+                    <span className="text-red-500 font-bold text-xs">
                       {DisplayPriceInVND(
                         pricewithDiscount(item.price, item.discount)
                       )}

@@ -150,6 +150,26 @@ const LoginAdmin = () => {
               "Đăng nhập"
             )}
           </button>
+
+                    <div className="flex items-center justify-between text-xs text-black mt-2">
+  {/* Bên trái */}
+  <a
+    href="/"
+    className="underline hover:text-red-500 transition-colors"
+  >
+    Quay về trang chủ
+  </a>
+
+  {/* Bên phải */}
+  <a
+    href="https://zalo.me/84973112480"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-blue-500 transition-colors"
+  >
+    Liên hệ hỗ trợ
+  </a>
+</div>
         </form>
       </div>
     </div>
