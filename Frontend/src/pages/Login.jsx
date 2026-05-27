@@ -17,19 +17,25 @@ const Login = () => {
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] =
+    useState(false);
+
   const [loading, setLoading] = useState(false);
 
-  const [rememberMe, setRememberMe] = useState(
-    () => localStorage.getItem("rememberMe") === "true"
-  );
+  const [rememberMe, setRememberMe] =
+    useState(
+      () =>
+        localStorage.getItem("rememberMe") ===
+        "true"
+    );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (rememberMe) {
-      const savedEmail = localStorage.getItem("savedEmail");
+      const savedEmail =
+        localStorage.getItem("savedEmail");
 
       if (savedEmail) {
         setData((prev) => ({
@@ -52,7 +58,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!data.email || !data.password) return;
+    if (!data.email || !data.password)
+      return;
 
     try {
       setLoading(true);
@@ -69,13 +76,26 @@ const Login = () => {
         return;
       }
 
-      if (resData.success && resData.data) {
+      if (
+        resData.success &&
+        resData.data
+      ) {
         toast.success(resData.message);
 
-        const { accesstoken, refreshToken } = resData.data;
+        const {
+          accesstoken,
+          refreshToken,
+        } = resData.data;
 
-        localStorage.setItem("accessToken", accesstoken);
-        localStorage.setItem("refreshToken", refreshToken);
+        localStorage.setItem(
+          "accessToken",
+          accesstoken
+        );
+
+        localStorage.setItem(
+          "refreshToken",
+          refreshToken
+        );
 
         localStorage.setItem(
           "rememberMe",
@@ -85,7 +105,8 @@ const Login = () => {
         const expiryDate = new Date();
 
         expiryDate.setDate(
-          expiryDate.getDate() + (rememberMe ? 7 : 1)
+          expiryDate.getDate() +
+            (rememberMe ? 7 : 1)
         );
 
         localStorage.setItem(
@@ -94,14 +115,24 @@ const Login = () => {
         );
 
         if (rememberMe) {
-          localStorage.setItem("savedEmail", data.email);
+          localStorage.setItem(
+            "savedEmail",
+            data.email
+          );
         } else {
-          localStorage.removeItem("savedEmail");
+          localStorage.removeItem(
+            "savedEmail"
+          );
         }
 
-        const userDetails = await fetchUserDetails();
+        const userDetails =
+          await fetchUserDetails();
 
-        dispatch(setUserDetails(userDetails.data.data));
+        dispatch(
+          setUserDetails(
+            userDetails.data.data
+          )
+        );
 
         setData({
           email: data.email,
@@ -122,29 +153,27 @@ const Login = () => {
     <div className="min-h-screen bg-red-50 flex flex-col items-center justify-center px-4 py-10">
       <Header />
 
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 mt-10">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8 mt-10">
+        {/* Title */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold uppercase text-red-500">
+          <h2 className="text-4xl font-bold uppercase text-red-500">
             Đăng nhập
           </h2>
         </div>
 
+        {/* Form */}
         <form
           onSubmit={handleSubmit}
           className="space-y-5"
         >
           {/* Email */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Email
             </label>
 
             <input
               type="email"
-              id="email"
               name="email"
               value={data.email}
               onChange={handleChange}
@@ -155,17 +184,17 @@ const Login = () => {
 
           {/* Password */}
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Mật khẩu
             </label>
 
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"}
-                id="password"
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
                 name="password"
                 value={data.password}
                 onChange={handleChange}
@@ -176,14 +205,18 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setShowPassword(!showPassword)
+                  setShowPassword(
+                    !showPassword
+                  )
                 }
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700"
               >
                 {showPassword ? (
                   <FaRegEye size={20} />
                 ) : (
-                  <FaRegEyeSlash size={20} />
+                  <FaRegEyeSlash
+                    size={20}
+                  />
                 )}
               </button>
             </div>
@@ -197,15 +230,19 @@ const Login = () => {
                 id="rememberMe"
                 checked={rememberMe}
                 onChange={(e) => {
-                  setRememberMe(e.target.checked);
+                  setRememberMe(
+                    e.target.checked
+                  );
 
-                  if (!e.target.checked) {
+                  if (
+                    !e.target.checked
+                  ) {
                     localStorage.removeItem(
                       "savedEmail"
                     );
                   }
                 }}
-                className="w-4 h-4 text-red-500 border-gray-300 rounded focus:ring-red-400"
+                className="w-4 h-4 text-red-500 border-gray-300 rounded"
               />
 
               <label
@@ -233,7 +270,8 @@ const Login = () => {
               loading
             }
             className={`w-full h-12 rounded-xl font-semibold text-white transition duration-200 flex items-center justify-center ${
-              data.email && data.password
+              data.email &&
+              data.password
                 ? "bg-red-500 hover:bg-red-600"
                 : "bg-gray-400 cursor-not-allowed"
             }`}
@@ -249,7 +287,7 @@ const Login = () => {
           </button>
 
           {/* Divider */}
-          <div className="flex items-center gap-3 py-1">
+          <div className="flex items-center gap-3 py-2">
             <div className="flex-1 h-[1px] bg-gray-200"></div>
 
             <span className="text-sm text-gray-400">

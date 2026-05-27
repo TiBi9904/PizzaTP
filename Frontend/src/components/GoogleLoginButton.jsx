@@ -69,18 +69,15 @@ const GoogleLoginButton = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="w-full overflow-hidden rounded-xl border border-gray-300">
-        <GoogleLogin
-          onSuccess={handleSuccess}
-          onError={handleError}
-          width="100%"
-          theme="outline"
-          size="large"
-          text="signin_with"
-          shape="rectangular"
-        />
-      </div>
+    <div className="google-login-wrapper">
+      <GoogleLogin
+        onSuccess={handleSuccess}
+        onError={handleError}
+        size="large"
+        theme="outline"
+        text="signin_with"
+        shape="rectangular"
+      />
     </div>
   );
 };
