@@ -1,84 +1,92 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import google from "../assets/google.png";
 import axios from "../utils/AxiosUser";
 import { toast } from "react-hot-toast";
 
 const GoogleLoginButton = () => {
-  const handleSuccess = async (
-    credentialResponse
-  ) => {
-    const tokenId =
-      credentialResponse?.credential;
-
-    if (!tokenId) {
-      toast.error(
-        "Không nhận được id_token từ Google"
-      );
-      return;
-    }
-
+  const handleGoogleLogin = async () => {
     try {
-      const res = await axios.post(
-        "/api/auth/google",
-        {
-          tokenId,
-        }
-      );
-
-      if (res.data.success) {
-        toast.success(
-          "Đăng nhập Google thành công!"
-        );
-
-        localStorage.setItem(
-          "accessToken",
-          res.data.data.accessToken
-        );
-
-        localStorage.setItem(
-          "refreshToken",
-          res.data.data.refreshToken
-        );
-
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1000);
-      } else {
-        toast.error(
-          res.data.message ||
-            "Đăng nhập thất bại"
-        );
+      if (!window.google) {
+        toast.error("Google SDK chưa tải");
+        return;
       }
+
+      window.google.accounts.id.initialize({
+        client_id:
+          "YOUR_GOOGLE_CLIENT_ID",
+        callback: async (response) => {
+          try {
+            const tokenId =
+              response.credential;
+
+            const res =
+              await axios.post(
+                "/api/auth/google",
+                {
+                  tokenId,
+                }
+              );
+
+            if (res.data.success) {
+              toast.success(
+                "Đăng nhập Google thành công!"
+              );
+
+              localStorage.setItem(
+                "accessToken",
+                res.data.data
+                  .accessToken
+              );
+
+              localStorage.setItem(
+                "refreshToken",
+                res.data.data
+                  .refreshToken
+              );
+
+              setTimeout(() => {
+                window.location.href =
+                  "/";
+              }, 1000);
+            } else {
+              toast.error(
+                res.data.message
+              );
+            }
+          } catch (error) {
+            toast.error(
+              error.response?.data
+                ?.message ||
+                "Đăng nhập thất bại"
+            );
+          }
+        },
+      });
+
+      window.google.accounts.id.prompt();
     } catch (error) {
-      console.error(
-        "Google login error:",
-        error
-      );
+      console.error(error);
 
       toast.error(
-        error.response?.data?.message ||
-          "Có lỗi xảy ra khi đăng nhập!"
+        "Không thể đăng nhập Google"
       );
     }
-  };
-
-  const handleError = () => {
-    toast.error(
-      "Đăng nhập Google thất bại"
-    );
   };
 
   return (
-    <div className="google-login-wrapper">
-      <GoogleLogin
-        onSuccess={handleSuccess}
-        onError={handleError}
-        size="large"
-        theme="outline"
-        text="signin_with"
-        shape="rectangular"
+    <button
+      type="button"
+      onClick={handleGoogleLogin}
+      className="w-full h-12 border border-gray-300 rounded-xl bg-white hover:bg-gray-50 transition-all duration-200 flex items-center justify-center gap-3 font-medium text-gray-700"
+    >
+      <img
+        src={google}
+        alt="Google"
+        className="w-5 h-5"
       />
-    </div>
+
+      <span>Đăng nhập bằng Google</span>
+    </button>
   );
 };
 
