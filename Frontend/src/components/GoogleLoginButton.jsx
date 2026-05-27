@@ -13,7 +13,7 @@ const GoogleLoginButton = () => {
 
       window.google.accounts.id.initialize({
         client_id:
-          "YOUR_GOOGLE_CLIENT_ID",
+          import.meta.env.VITE_GOOGLE_CLIENT_ID,
         callback: async (response) => {
           try {
             const tokenId =
