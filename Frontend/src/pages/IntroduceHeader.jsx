@@ -1,6 +1,6 @@
 import React from "react";
-import avt1 from "../assets/avt_gioithieu_bht.jpg";
-import avt2 from "../assets/avt_gioithieu_nhdp.png";
+import avt1 from "../assets/bht.jpg";
+import avt2 from "../assets/nhdp.png";
 
 const IntroduceHeader = () => {
   const founders = [
