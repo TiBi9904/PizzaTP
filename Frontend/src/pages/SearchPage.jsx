@@ -12,7 +12,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import NoData from "../components/NoData";
 import Loading from "../components/Loading";
 
-const SearchPage = () => {
+const SearchPage = ( { close }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [query, setQuery] = useState("");
@@ -139,36 +139,88 @@ const SearchPage = () => {
         <X size={28} className="text-gray-700 dark:text-gray-200" />
       </button>
 
-      <div className="w-full max-w-2xl mt-24 sm:mt-32 relative">
-        <div className="relative flex items-center">
-          <input
-            type="text"
-            placeholder="Tìm kiếm pizza yêu thích của bạn..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={handleKeyPress}
-            className="w-full text-xl sm:text-2xl border-b-2 border-gray-300 pb-2 pr-10 focus:outline-none focus:border-red-500 dark:bg-gray-900 dark:text-gray-100"
-          />
+<div className="w-full max-w-3xl mt-20 sm:mt-24 md:mt-28 px-4 sm:px-0">
+  <div className="relative">
+    <input
+      type="text"
+      placeholder="Tìm kiếm pizza yêu thích của bạn..."
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      onKeyDown={handleKeyPress}
+      className="
+        w-full
+        h-14 sm:h-16
+        pl-5 sm:pl-6
+        pr-24
+        text-base sm:text-lg md:text-xl
+        rounded-2xl
+        border border-gray-200
+        bg-white
+        shadow-sm
+        focus:outline-none
+        focus:ring-2
+        focus:ring-red-400
+        focus:border-red-400
+        transition-all
+        duration-300
+        dark:bg-gray-900
+        dark:border-gray-700
+        dark:text-gray-100
+      "
+    />
 
-          {query ? (
-            <button
-              onClick={clearInput}
-              className="absolute right-8 top-0 p-1 hover:rotate-90 transition-transform"
-              aria-label="Xóa nội dung"
-            >
-              <X size={24} className="text-gray-500 hover:text-red-500" />
-            </button>
-          ) : null}
+    {query && (
+      <button
+        onClick={clearInput}
+        className="
+          absolute
+          right-14
+          top-1/2
+          -translate-y-1/2
+          p-2
+          rounded-full
+          hover:bg-red-50
+          transition-all
+          duration-300
+        "
+        aria-label="Xóa nội dung"
+      >
+        <X
+          size={18}
+          className="text-gray-500 hover:text-red-500"
+        />
+      </button>
+    )}
 
-          <button
-            onClick={handleSearchSubmit}
-            className="absolute right-0 top-0 p-1"
-            aria-label="Tìm kiếm"
-          >
-            <Search size={24} className="text-red-500 hover:text-red-600" />
-          </button>
-        </div>
-      </div>
+    <button
+      onClick={handleSearchSubmit}
+      className="
+        absolute
+        right-2
+        top-1/2
+        -translate-y-1/2
+        h-10
+        w-10
+        sm:h-11
+        sm:w-11
+        flex
+        items-center
+        justify-center
+        rounded-xl
+        bg-red-500
+        text-white
+        hover:bg-red-600
+        transition-all
+        duration-300
+        hover:scale-105
+      "
+      aria-label="Tìm kiếm"
+    >
+      <Search size={20} />
+    </button>
+  </div>
+</div>
+
 
       <div className="w-full max-w-6xl mt-8 flex-1">
         {loading && data.length === 0 && <Loading />}
