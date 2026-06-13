@@ -751,6 +751,90 @@ const DashboardAdmin = () => {
                     </span>
                   </Link>
 
+            <div className="mb-1">
+              <Link
+                to="/quan-tri-vien/bang-dieu-khien/phan-hoi-khach-hang"
+                className={`w-full flex items-center justify-between px-3 sm:px-4 py-3 rounded-xl transition-all duration-300 group ${
+                  location.pathname.startsWith(
+                    "/quan-tri-vien/bang-dieu-khien/phan-hoi-khach-hang"
+                  )
+                    ? "text-orange-600 bg-gradient-to-r from-orange-50 to-orange-25"
+                    : "text-gray-600 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-transparent"
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <MdChat className="text-lg sm:text-xl group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium text-xs sm:text-sm">
+                    Phản hồi khách hàng
+                  </span>
+                </div>
+              </Link>
+            </div>
+            <div className="mb-1">
+              <button
+                onClick={() => toggleSubmenu("orders")}
+                className={`w-full flex items-center justify-between px-3 sm:px-4 py-3 rounded-xl transition-all duration-300 group ${
+                  location.pathname.startsWith(
+                    "/quan-tri-vien/bang-dieu-khien/don-hang"
+                  )
+                    ? "text-orange-600 bg-gradient-to-r from-orange-50 to-orange-25"
+                    : "text-gray-600 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-transparent"
+                }`}
+              >
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <MdReceipt className="text-lg sm:text-xl group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-medium text-xs sm:text-sm">
+                    Quản lý đơn hàng
+                  </span>
+                </div>
+                <span
+                  className="transition-transform duration-300 text-sm sm:text-base"
+                  style={{
+                    transform: expandedMenus["orders"]
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
+                  }}
+                >
+                  <MdExpandMore />
+                </span>
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  expandedMenus["orders"]
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="ml-8 sm:ml-11 mt-1 space-y-1 border-l-2 border-gray-100 pl-2 sm:pl-3">
+                  <Link
+                    to="/quan-tri-vien/bang-dieu-khien/don-hang-cho-giao"
+                    className="block px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Chờ giao
+                  </Link>
+
+                  <Link
+                    to="/quan-tri-vien/bang-dieu-khien/don-hang-dang-giao"
+                    className="block px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Đang giao
+                  </Link>
+
+                  <Link
+                    to="/quan-tri-vien/bang-dieu-khien/don-hang-da-giao"
+                    className="block px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Đã giao
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
                   <div className="mb-1">
                     <button
                       onClick={() => toggleSubmenu("products")}
@@ -987,10 +1071,10 @@ const DashboardAdmin = () => {
                           Danh sách mã giảm giá
                         </Link>
                         <Link
-                          to="/quan-tri-vien/bang-dieu-khien/tao-ma-moi"
+                          to="/quan-tri-vien/bang-dieu-khien/tao-ma-giam-gia"
                           className={`block w-full text-left px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-lg transition-all duration-200 ${
                             location.pathname ===
-                            "/quan-tri-vien/bang-dieu-khien/tao-ma-moi"
+                            "/quan-tri-vien/bang-dieu-khien/tao-ma-giam-gia"
                               ? "text-orange-600 bg-orange-50 font-medium"
                               : "text-gray-500 hover:text-orange-600 hover:bg-orange-50"
                           }`}
