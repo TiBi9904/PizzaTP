@@ -2290,7 +2290,7 @@ const DashboardDelivery = () => {
                 </div>
               </div>
 
-              <div className="relative" style={{ height: "600px" }}>
+              <div className="relative px-4 mb-10" style={{ height: "400px" }}>
                 <MapContainer
                   center={currentLocation}
                   zoom={zoom}
