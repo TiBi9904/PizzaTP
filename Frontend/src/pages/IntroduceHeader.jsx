@@ -90,7 +90,7 @@ const IntroduceHeader = () => {
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="w-full h-full object-cover rounded-full border-4 border-orange-100"
+                    className="w-full h-full object-contain rounded-full border-4 border-orange-100"
                   />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
