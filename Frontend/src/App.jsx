@@ -61,25 +61,11 @@ function App() {
     }
   };
 
-useEffect(() => {
-  const wakeUpServer = async () => {
-    try {
-      // đánh thức Render
-      await fetch("https://pizza-tp.onrender.com");
-    } catch (error) {
-      console.error("Wake up server error:", error);
-    }
-
-    // gọi dữ liệu sau khi backend thức
-    await Promise.all([
-      fetchUser(),
-      fetchCategory(),
-      fetchSubCategory(),
-    ]);
-  };
-
-  wakeUpServer();
-}, []);
+  useEffect(() => {
+    fetchUser();
+    fetchCategory();
+    fetchSubCategory();
+  }, []);
 
   return (
     <LogoutModalProvider>
