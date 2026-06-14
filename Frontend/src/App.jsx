@@ -23,16 +23,16 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 function App() {
   const dispatch = useDispatch();
 
-  const fetchUser = async () => {
-    try {
-      const userData = await fetchUserDetails();
-      if (userData && userData.data) {
-        dispatch(setUserDetails(userData.data));
-      }
-    } catch (error) {
-      dispatch(logout());
+const fetchUser = async () => {
+  try {
+    const userData = await fetchUserDetails();
+    if (userData?.data) {
+      dispatch(setUserDetails(userData.data));
     }
-  };
+  } catch (error) {
+    dispatch(logout());
+  }
+};
 
   const fetchCategory = async () => {
     try {
@@ -61,11 +61,43 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-    fetchCategory();
-    fetchSubCategory();
-  }, []);
+useEffect(() => {
+  const init = async () => {
+    try {
+      dispatch(setLoadingCategory(true));
+
+      const [userRes, catRes, subCatRes] = await Promise.all([
+        fetchUserDetails(),
+        Axios({ ...SummaryApi.getCategory }),
+        Axios({ ...SummaryApi.getSubCategory }),
+      ]);
+
+      // USER
+      if (userRes?.data) {
+        dispatch(setUserDetails(userRes.data));
+      } else {
+        dispatch(logout());
+      }
+
+      // CATEGORY
+      if (catRes?.data?.success) {
+        dispatch(setAllCategory(catRes.data.data));
+      }
+
+      // SUBCATEGORY
+      if (subCatRes?.data?.success) {
+        dispatch(setAllSubCategory(subCatRes.data.data));
+      }
+
+    } catch (error) {
+      console.error("Init error:", error);
+    } finally {
+      dispatch(setLoadingCategory(false));
+    }
+  };
+
+  init();
+}, []);
 
   return (
     <LogoutModalProvider>
