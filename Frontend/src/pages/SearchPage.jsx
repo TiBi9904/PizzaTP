@@ -150,7 +150,7 @@ const SearchPage = ( { close }) => {
       className="
         w-full
         h-14 sm:h-16
-        pl-5 sm:pl-6
+        pl-5 sm:pl-6 
         pr-24
         text-base sm:text-lg md:text-xl
         rounded-2xl
