@@ -84,6 +84,15 @@ app.get("/", (req, res) => {
   res.json({ message: "Server OK", PORT: process.env.PORT || 8080 });
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: Date.now(),
+  });
+});
+
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
