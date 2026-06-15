@@ -105,7 +105,7 @@ const NotificationBell = () => {
             onClick={() => setOpen(false)}
           />
 
-          <div className="hidden md:block absolute top-12 right-0 w-80 bg-white dark:bg-gray-800 shadow-xl rounded-lg z-50 border border-gray-200">
+          <div className="hidden md:block absolute top-12 right-0 w-80 bg-white text-black shadow-xl rounded-lg z-50 border border-gray-200">
             <div className="flex items-center justify-between p-4 border-b">
               <p className="font-semibold text-lg">Thông báo</p>
               {unread > 0 && (
@@ -133,7 +133,7 @@ const NotificationBell = () => {
                         ${
                           !item.isRead
                             ? "bg-blue-50 border border-blue-100 hover:bg-blue-100"
-                            : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                            : "hover:bg-gray-50 dark:hover:bg-gray-100"
                         }`}
                     >
                       <div className="flex items-start gap-3">
@@ -171,7 +171,7 @@ const NotificationBell = () => {
           </div>
 
           <div className="md:hidden fixed inset-0 z-50 flex flex-col">
-            <div className="bg-white dark:bg-gray-800 border-b p-4">
+            <div className="bg-white text-black border-b p-4">
               <div className="flex items-center justify-between">
                 <p className="font-semibold text-lg">Thông báo</p>
                 <div className="flex items-center gap-4">
@@ -193,7 +193,7 @@ const NotificationBell = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 bg-white dark:bg-gray-800 overflow-y-auto scrollBarCustom p-4">
+            <div className="flex-1 bg-white text-black overflow-y-auto scrollBarCustom p-4">
               {notifications.length === 0 ? (
                 <p className="text-gray-500 text-center py-12">
                   Không có thông báo
@@ -244,7 +244,7 @@ const NotificationBell = () => {
               )}
             </div>
 
-            <div className="bg-white dark:bg-gray-800 border-t p-4">
+            <div className="bg-white text-black border-t p-4">
               <button
                 onClick={() => setOpen(false)}
                 className="w-full py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-medium"
