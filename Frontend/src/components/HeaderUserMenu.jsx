@@ -50,7 +50,7 @@ const HeaderUserMenu = ({ closeMenu }) => {
   }, [showModal, handleLogout, closeMenu]);
 
   return (
-    <div className="text-gray-800 dark:text-gray-100">
+    <div className="text-gray-800 dark:text-black">
       <ul className="space-y-2">
         <li>
           <Link
