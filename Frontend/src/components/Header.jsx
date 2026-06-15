@@ -95,7 +95,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 transition-all duration-300">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Logo" className="w-12 h-12" />
@@ -106,7 +106,7 @@ const Header = () => {
             <li key={i}>
               <Link
                 to={item.path}
-                className="hover:text-red-500 transition-colors"
+                className="hover:text-red-500 transition-colors text-black"
               >
                 {item.name}
               </Link>
@@ -114,7 +114,7 @@ const Header = () => {
           ))}
         </ul>
 
-        <div className="flex items-center space-x-4 text-gray-900 dark:text-gray-100 relative">
+        <div className="flex items-center space-x-4 text-black relative">
           <Search />
 
           {isLoggedIn && <NotificationBell />}
@@ -122,13 +122,13 @@ const Header = () => {
           <div className="relative" ref={userMenuRef}>
             <button
               onClick={handleUserIconClick}
-              className="flex items-center hover:text-red-500 transition-colors"
+              className="flex items-center hover:text-red-500 transition-colors text-black"
             >
               <User size={22} />
             </button>
 
             {openUserMenu && (
-              <div className="absolute top-12 right-1/2 translate-x-1/2 lg:right-0 lg:translate-x-0 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 min-w-56 z-50 border border-gray-200">
+              <div className="text-black absolute top-12 right-1/2 translate-x-1/2 lg:right-0 lg:translate-x-0 bg-white rounded-lg shadow-lg p-4 min-w-56 z-50 border border-gray-200">
                 {isLoggedIn ? (
                   <HeaderUserMenu
                     key="header-usermenu"
@@ -143,7 +143,7 @@ const Header = () => {
 
           <Link
             to={"/gio-hang"}
-            className="hover:text-red-500 transition-colors relative"
+            className="hover:text-red-500 transition-colors relative text-black"
             onClick={handleCartClick}
           >
             <ShoppingCart size={22} />
@@ -156,7 +156,7 @@ const Header = () => {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 hover:text-red-500 transition-colors"
+            className="lg:hidden p-2 hover:text-red-500 transition-colors text-black"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -164,7 +164,7 @@ const Header = () => {
       </nav>
 
       <div
-        className={`lg:hidden fixed inset-0 bg-white dark:bg-gray-900 bg-opacity-95 z-40 flex flex-col items-center justify-center transform transition-transform duration-500 ${
+        className={`lg:hidden fixed inset-0 bg-whitebg-opacity-95 z-40 flex flex-col items-center justify-center transform transition-transform duration-500 ${
           isMenuOpen
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0"
@@ -183,7 +183,7 @@ const Header = () => {
               <Link
                 to={item.path}
                 onClick={handleMobileLinkClick}
-                className="hover:text-red-500 transition-colors"
+                className="hover:text-red-500 transition-colors text-black"
               >
                 {item.name}
               </Link>
@@ -196,7 +196,7 @@ const Header = () => {
                 <Link
                   to="/dang-nhap"
                   onClick={handleMobileLinkClick}
-                  className="hover:text-red-500 transition-colors"
+                  className="hover:text-red-500 transition- text-black"
                 >
                   Đăng Nhập
                 </Link>
@@ -205,7 +205,7 @@ const Header = () => {
                 <Link
                   to="/dang-ky"
                   onClick={handleMobileLinkClick}
-                  className="hover:text-red-500 transition-colors"
+                  className="hover:text-red-500 transition-colors text-black"
                 >
                   Đăng Ký
                 </Link>
@@ -218,7 +218,7 @@ const Header = () => {
                   setIsMenuOpen(false);
                   setOpenUserMenu(true);
                 }}
-                className="hover:text-red-500 transition-colors"
+                className="hover:text-red-500 transition-colors text-black"
               >
                 Tài Khoản
               </button>
