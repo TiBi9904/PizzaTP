@@ -73,7 +73,7 @@ const Search = ({ darkMode }) => {
       {!isSearchPage ? (
         <div
           onClick={redirectToSearchPage}
-          className="hidden lg:flex items-center border border-gray-300 dark:border-gray-600 rounded-md px-2 py-2 w-56 focus-within:ring-2 focus-within:ring-red-500 cursor-pointer transition-colors duration-200 bg-white dark:bg-gray-800 hover:border-red-500 group"
+          className="hidden lg:flex items-center border border-gray-800 rounded-md px-2 py-2 w-56 focus-within:ring-2 focus-within:ring-red-500 cursor-pointer transition-colors duration-200 bg-white hover:border-red-500 group"
         >
           <TypeAnimation
             sequence={searchTerms.flatMap((term) => [term, 2000])}
@@ -93,7 +93,7 @@ const Search = ({ darkMode }) => {
         </div>
       ) : (
 
-        <div className="hidden lg:flex items-center border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 w-56 focus-within:ring-2 focus-within:ring-red-500 transition-colors duration-200 bg-white dark:bg-gray-800">
+        <div className="hidden lg:flex items-center border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 w-56 focus-within:ring-2 focus-within:ring-red-500 transition-colors duration-200 bg-white">
           <input
             type="text"
             value={searchValue}
@@ -120,7 +120,7 @@ const Search = ({ darkMode }) => {
         </button>
       ) : (
 
-        <div className="lg:hidden flex items-center border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 w-40 focus-within:ring-2 focus-within:ring-red-500 transition-colors duration-200 bg-white dark:bg-gray-800">
+        <div className="lg:hidden flex items-center border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 w-40 focus-within:ring-2 focus-within:ring-red-500 transition-colors duration-200 bg-white">
           <input
             type="text"
             value={searchValue}
