@@ -53,7 +53,7 @@ const UserMenu = ({ closeMenu }) => {
           <Link
             to="/nguoi-dung/bang-dieu-khien/tai-khoan-cua-toi"
             onClick={closeMenu}
-            className="block hover:bg-red-200 transition-colors px-2 py-1 rounded"
+            className="block hover:bg-red-200 text-black transition-colors px-2 py-1 rounded"
           >
             Tài khoản của tôi
           </Link>
@@ -63,7 +63,7 @@ const UserMenu = ({ closeMenu }) => {
           <Link
             to="/nguoi-dung/bang-dieu-khien/theo-doi-don-hang"
             onClick={closeMenu}
-            className="block hover:bg-red-200 transition-colors px-2 py-1 rounded"
+            className="block hover:bg-red-200 text-black transition-colors px-2 py-1 rounded"
           >
             Theo dõi đơn hàng
           </Link>
@@ -72,7 +72,7 @@ const UserMenu = ({ closeMenu }) => {
           <Link
             to="/nguoi-dung/bang-dieu-khien/don-hang-da-dat"
             onClick={closeMenu}
-            className="block hover:bg-red-200 transition-colors px-2 py-1 rounded"
+            className="block hover:bg-red-200 text-black transition-colors px-2 py-1 rounded"
           >
             Đơn hàng đã đặt
           </Link>
@@ -81,7 +81,7 @@ const UserMenu = ({ closeMenu }) => {
           <Link
             to="/nguoi-dung/bang-dieu-khien/luu-dia-chi"
             onClick={closeMenu}
-            className="block hover:bg-red-200 transition-colors px-2 py-1 rounded"
+            className="block hover:bg-red-200 text-black transition-colors px-2 py-1 rounded"
           >
             Lưu địa chỉ
           </Link>
@@ -90,7 +90,7 @@ const UserMenu = ({ closeMenu }) => {
           <Link
             to="/nguoi-dung/bang-dieu-khien/san-pham-yeu-thich"
             onClick={closeMenu}
-            className="block hover:bg-red-200 transition-colors px-2 py-1 rounded"
+            className="block hover:bg-red-200 text-black transition-colors px-2 py-1 rounded"
           >
             Sản phẩm yêu thích
           </Link>
