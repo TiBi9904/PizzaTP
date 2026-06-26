@@ -164,7 +164,7 @@ const Header = () => {
       </nav>
 
       <div
-        className={`lg:hidden fixed inset-0 bg-whitebg-opacity-95 z-40 flex flex-col items-center justify-center transform transition-transform duration-500 ${
+        className={`lg:hidden fixed inset-0 bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center transform transition-transform duration-500 ${
           isMenuOpen
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0"
